@@ -40,8 +40,8 @@ class WishlistTest extends TestCase
 
         $this->withHeader('Authorization', "Bearer $token")
             ->postJson("/api/wishlist/{$product->id}")
-            ->assertStatus(200)
-            ->assertJson(['message' => 'Added to wishlist']);
+            ->assertStatus(201)
+            ->assertJson(['message' => 'Product added to wishlist']);
 
         $this->withHeader('Authorization', "Bearer $token")
             ->deleteJson("/api/wishlist/{$product->id}")

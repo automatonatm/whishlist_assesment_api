@@ -29,16 +29,21 @@ class WishlistController extends Controller {
     public function store(Request $request, Product $product)
     {
         $user = $request->user();
-        if (!$user->wishlist->contains($product)) {
-            $user->wishlist()->attach($product);
-        }
-        return response()->json(['message' => 'Product added to wishlist']);
+        $wishlist = Wishlist::firstOrCreate([
+            'user_id' => $user->id,
+            'product_id' => $product->id,
+        ]);
+
+        return response()->json(['message' => 'Product added to wishlist'], 201);
+
+       
     }
 
     public function remove(Request $request, Product $product)
     {
-        $user = $request->user();
-        $user->wishlist()->detach($product);
-        return response()->json(['message' => 'Product removed from wishlist']);
+        $deleted = Wishlist::where('user_id', $request->user()->id)
+        ->where('product_id', $product->id)
+        ->delete();
+        return response()->json(['message' => 'Removed from wishlist']);
     }
 }

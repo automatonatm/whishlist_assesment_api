@@ -1,0 +1,113 @@
+{
+    "info": {
+        "name": "Wishlist API",
+        "_postman_id": "uuid-here",
+        "description": "Wishlist API for Laravel",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Register",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/api/register",
+                    "host": ["localhost"],
+                    "port": "8000",
+                    "path": ["api", "register"]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"name\": \"John\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password\",\n  \"password_confirmation\": \"password\"\n}",
+                    "options": { "raw": { "language": "json" } }
+                }
+            }
+        },
+        {
+            "name": "Login",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:8000/api/login",
+                    "host": ["localhost"],
+                    "port": "8000",
+                    "path": ["api", "login"]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password\"\n}"
+                }
+            }
+        },
+        {
+            "name": "Get Products",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:8000/api/products",
+                    "host": ["localhost"],
+                    "port": "8000",
+                    "path": ["api", "products"]
+                }
+            }
+        },
+        {
+            "name": "Add to Wishlist",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost:8000/api/wishlist/1",
+                    "host": ["localhost"],
+                    "port": "8000",
+                    "path": ["api", "wishlist", "1"]
+                },
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "View Wishlist",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost:8000/api/wishlist",
+                    "host": ["localhost"],
+                    "port": "8000",
+                    "path": ["api", "wishlist"]
+                },
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Remove from Wishlist",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http://localhost:8000/api/wishlist/1",
+                    "host": ["localhost"],
+                    "port": "8000",
+                    "path": ["api", "wishlist", "1"]
+                },
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}",
+                        "type": "text"
+                    }
+                ]
+            }
+        }
+    ]
+}
